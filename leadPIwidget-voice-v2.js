@@ -426,21 +426,25 @@
       }
 
       /* Sound Wave Background */
-      .sound-waves {
+.     .sound-waves {
         position: absolute;
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 6px;
-        z-index: 1;
+        gap: 4px;
+        z-index: 0;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .voice-avatar-container.speaking .sound-waves {
+        opacity: 0.4;
       }
 
       .sound-wave-bar {
-        width: 4px;
-        background: linear-gradient(180deg, #d4af37 0%, #a67c00 100%);
+        width: 3px;
+        background: rgba(212, 175, 55, 0.6);
         border-radius: 2px;
-        opacity: 0;
-        transition: opacity 0.3s ease;
       }
 
       .sound-wave-bar:nth-child(1) {
