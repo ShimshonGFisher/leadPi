@@ -14,8 +14,9 @@
     privacyNotice: 'By using this chat, you agree to our terms and privacy policy. Your conversation may be recorded for quality and training purposes.',
     collectFields: ['name', 'phone', 'email', 'accidentType', 'injurySeverity', 'state'],
     
-    // Retell Voice Configuration
-    retellAgentId: 'your-retell-agent-id-here', // UPDATE THIS from Retell dashboard
+    // Voice Configuration - n8n handles token generation
+    voiceTokenWebhookUrl: 'https://kaielran.app.n8n.cloud/webhook/voice/start',
+    retellAgentId: 'agent_f8a4ac94d98f0bb283995c58d3', // Backup reference, not used directly
   };
 
   // State management
@@ -102,28 +103,6 @@
         font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
       }
 
-      /* Demo Disclaimer Banner */
-      .leadpi-demo-banner {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-        color: white;
-        padding: 12px 20px;
-        text-align: center;
-        z-index: 999999;
-        font-size: 14px;
-        font-weight: 500;
-        border-bottom: 2px solid #60a5fa;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      }
-
-      .leadpi-demo-banner strong {
-        color: #fbbf24;
-        font-weight: 700;
-      }
-
       /* Small launcher */
       #aba-chat-launcher {
         position: fixed;
@@ -182,7 +161,7 @@
         position: fixed;
         bottom: 20px;
         ${CONFIG.position}: 20px;
-        width: 320px;
+        width: 340px;
         background: white;
         border-radius: 16px;
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
@@ -208,9 +187,34 @@
         display: flex;
       }
 
+      /* Demo Banner - attached to widget */
+      .aba-demo-banner {
+        background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        color: white;
+        padding: 10px 16px;
+        text-align: center;
+        font-size: 11px;
+        font-weight: 500;
+        line-height: 1.4;
+        border-bottom: 2px solid #60a5fa;
+      }
+
+      .aba-demo-banner strong {
+        color: #fbbf24;
+        font-weight: 700;
+      }
+
+      .aba-demo-banner .demo-subtitle {
+        display: block;
+        font-size: 10px;
+        opacity: 0.9;
+        margin-top: 2px;
+      }
+
       .aba-medium-header {
         display: flex;
-        justify-content: flex-end;
+        justify-content: space-between;
+        align-items: center;
         padding: 12px 16px 0;
       }
 
@@ -222,6 +226,20 @@
         font-size: 20px;
         padding: 0;
         line-height: 1;
+      }
+
+      /* Powered by LeadPI badge */
+      .aba-powered-by {
+        font-size: 10px;
+        color: #9ca3af;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
+      .aba-powered-by span {
+        color: #3b82f6;
+        font-weight: 600;
       }
 
       .aba-medium-content {
@@ -238,6 +256,32 @@
         margin-bottom: 8px;
         border: 3px solid white;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .aba-medium-agent-info {
+        margin-bottom: 12px;
+      }
+
+      .aba-medium-agent-name {
+        font-weight: 600;
+        font-size: 16px;
+        color: #1f2937;
+      }
+
+      .aba-medium-agent-role {
+        font-size: 12px;
+        color: #6b7280;
+      }
+
+      .aba-medium-company-badge {
+        display: inline-block;
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+        color: white;
+        padding: 4px 12px;
+        border-radius: 12px;
+        font-size: 11px;
+        font-weight: 600;
+        margin-top: 4px;
       }
 
       .aba-medium-message {
@@ -299,6 +343,20 @@
 
       .aba-voice-call-button:active {
         transform: translateY(0);
+      }
+
+      .aba-voice-call-button:disabled {
+        background: #9ca3af;
+        cursor: not-allowed;
+        transform: none;
+        box-shadow: none;
+      }
+
+      .aba-mode-hint {
+        margin-top: 12px;
+        font-size: 11px;
+        color: #9ca3af;
+        text-align: center;
       }
 
       /* Voice Call Modal */
@@ -566,15 +624,41 @@
         display: flex;
       }
 
+      /* Chat window demo banner */
+      .aba-chat-demo-banner {
+        background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+        color: white;
+        padding: 8px 16px;
+        text-align: center;
+        font-size: 10px;
+        font-weight: 500;
+      }
+
+      .aba-chat-demo-banner strong {
+        color: #fbbf24;
+      }
+
       .aba-chat-header {
-        background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+        background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
         color: white;
         padding: 16px 20px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         font-weight: 600;
-        border-bottom: 1px solid #333;
+      }
+
+      .aba-chat-header-title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .aba-chat-header-title img {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 2px solid rgba(255,255,255,0.3);
       }
 
       .aba-chat-close {
@@ -608,6 +692,72 @@
         overflow-y: auto;
         padding: 20px;
         background: #f9fafb;
+      }
+
+      .aba-message {
+        margin-bottom: 16px;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .aba-message.user {
+        align-items: flex-end;
+      }
+
+      .aba-message.assistant {
+        align-items: flex-start;
+      }
+
+      .aba-message-bubble {
+        max-width: 80%;
+        padding: 12px 16px;
+        border-radius: 16px;
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .aba-message.user .aba-message-bubble {
+        background: var(--aba-primary-color, #DC2626);
+        color: white;
+        border-bottom-right-radius: 4px;
+      }
+
+      .aba-message.assistant .aba-message-bubble {
+        background: white;
+        color: #374151;
+        border-bottom-left-radius: 4px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      }
+
+      .aba-typing-indicator {
+        display: flex;
+        gap: 4px;
+        padding: 12px 16px;
+        background: white;
+        border-radius: 16px;
+        width: fit-content;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      }
+
+      .aba-typing-indicator span {
+        width: 8px;
+        height: 8px;
+        background: #9ca3af;
+        border-radius: 50%;
+        animation: typing 1.4s infinite;
+      }
+
+      .aba-typing-indicator span:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+
+      .aba-typing-indicator span:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      @keyframes typing {
+        0%, 60%, 100% { transform: translateY(0); }
+        30% { transform: translateY(-4px); }
       }
 
       .aba-chat-input-area {
@@ -655,6 +805,12 @@
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
       }
 
+      .aba-chat-send:disabled {
+        background: #9ca3af;
+        cursor: not-allowed;
+        transform: none;
+      }
+
       @media (max-width: 480px) {
         #aba-chat-window {
           width: calc(100vw - 20px);
@@ -683,11 +839,6 @@
     const widget = document.createElement('div');
     widget.id = 'aba-chat-widget';
     widget.innerHTML = `
-      <!-- Demo Banner -->
-      <div class="leadpi-demo-banner">
-        🎯 <strong>DEMO MODE:</strong> This is a demonstration of LeadPI's AI intake system for personal injury law firms.
-      </div>
-
       <!-- Small launcher -->
       <div id="aba-chat-launcher">
         <img src="${CONFIG.agentAvatar}" alt="${CONFIG.agentName}">
@@ -696,13 +847,24 @@
 
       <!-- Medium popup -->
       <div id="aba-medium-popup">
+        <!-- Demo banner attached to widget -->
+        <div class="aba-demo-banner">
+          🎯 <strong>DEMO:</strong> AI Intake for Justice League Law Firm
+          <span class="demo-subtitle">This is a fictitious firm showing LeadPI's capabilities</span>
+        </div>
+
         <div class="aba-medium-header">
+          <div class="aba-powered-by">Powered by <span>LeadPI</span></div>
           <button class="aba-medium-close">✕</button>
         </div>
+
         <div class="aba-medium-content">
           <img src="${CONFIG.agentAvatar}" alt="${CONFIG.agentName}" class="aba-medium-avatar">
-          <div style="font-weight: 600; font-size: 16px; margin-bottom: 4px;">${CONFIG.agentName}</div>
-          <div style="font-size: 12px; color: #9ca3af; margin-bottom: 16px;">AI Intake Specialist</div>
+          <div class="aba-medium-agent-info">
+            <div class="aba-medium-agent-name">${CONFIG.agentName}</div>
+            <div class="aba-medium-agent-role">AI Intake Specialist</div>
+            <div class="aba-medium-company-badge">⚖️ Justice League</div>
+          </div>
           <div class="aba-medium-message">${CONFIG.greeting}</div>
           
           <div class="aba-medium-buttons">
@@ -711,20 +873,19 @@
           </div>
 
           <button class="aba-voice-call-button" id="start-voice-call">
-            📞 Or Talk to Sarah Now
+            📞 Or Talk to ${CONFIG.agentName} Now
           </button>
 
-          <div style="margin-top: 12px; font-size: 11px; color: #9ca3af; text-align: center;">
+          <div class="aba-mode-hint">
             💬 Chat or 🎤 Voice - Your choice!
           </div>
         </div>
       </div>
 
-      <!-- Voice Call Modal - HUMAN-CENTERED DESIGN -->
+      <!-- Voice Call Modal -->
       <div class="aba-voice-modal-overlay" id="voice-modal-overlay"></div>
       <div class="aba-voice-modal" id="voice-modal">
         <div class="voice-avatar-container" id="voice-avatar-container">
-          <!-- Sound wave bars behind avatar -->
           <div class="sound-waves">
             <div class="sound-wave-bar"></div>
             <div class="sound-wave-bar"></div>
@@ -732,8 +893,6 @@
             <div class="sound-wave-bar"></div>
             <div class="sound-wave-bar"></div>
           </div>
-          
-          <!-- Sarah's face in center -->
           <img src="${CONFIG.agentAvatar}" alt="${CONFIG.agentName}" class="voice-avatar">
         </div>
         
@@ -743,7 +902,7 @@
 
         <div class="voice-modal-disclaimer">
           <div class="voice-modal-disclaimer-text">
-            <strong>DEMO NOTICE:</strong> This is a demonstration call with an AI agent representing <strong>Justice League</strong>, a fictitious law firm.
+            <strong>DEMO:</strong> This is a demonstration call with an AI agent representing <strong>Justice League</strong>, a fictitious law firm.
           </div>
         </div>
 
@@ -752,20 +911,27 @@
         </div>
       </div>
 
-      <!-- Full chat window (keeping original) -->
+      <!-- Full chat window -->
       <div id="aba-chat-window">
-        <div class="aba-chat-header">
-          <div>${CONFIG.companyName}</div>
-          <button class="aba-chat-close">✕</button>
+        <!-- Demo banner in chat window too -->
+        <div class="aba-chat-demo-banner">
+          🎯 <strong>DEMO:</strong> Justice League Law Firm (Fictitious) | Powered by LeadPI
         </div>
-        <div class="aba-agent-intro">
-          <img src="${CONFIG.agentAvatar}" alt="${CONFIG.agentName}">
-          <div style="font-weight: 600;">${CONFIG.agentName}</div>
+
+        <div class="aba-chat-header">
+          <div class="aba-chat-header-title">
+            <img src="${CONFIG.agentAvatar}" alt="${CONFIG.agentName}">
+            <div>
+              <div>${CONFIG.agentName}</div>
+              <div style="font-size: 11px; font-weight: normal; opacity: 0.8;">Justice League</div>
+            </div>
+          </div>
+          <button class="aba-chat-close">✕</button>
         </div>
         <div class="aba-chat-messages" id="aba-messages-container"></div>
         <div class="aba-chat-input-area">
           <div class="aba-chat-input-wrapper">
-            <input type="text" class="aba-chat-input" id="aba-user-input" placeholder="Message..." />
+            <input type="text" class="aba-chat-input" id="aba-user-input" placeholder="Type your message..." />
             <button class="aba-chat-send" id="aba-send-button">➤</button>
           </div>
         </div>
@@ -777,27 +943,62 @@
 
   // Load Retell SDK
   function loadRetellSDK() {
-    return new Promise((resolve, reject) => {
-      if (window.RetellWebClient) {
-        resolve();
-        return;
-      }
+  return new Promise(async (resolve, reject) => {
+    if (window.RetellWebClient) {
+      resolve();
+      return;
+    }
 
-      const script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.3.2/dist/index.umd.min.js';
-      script.onload = () => {
-        console.log('✅ Retell SDK loaded');
-        resolve();
-      };
-      script.onerror = () => reject(new Error('Failed to load Retell SDK'));
-      document.head.appendChild(script);
+    try {
+      const module = await import('https://cdn.jsdelivr.net/npm/retell-client-js-sdk@2.0.7/+esm');
+      window.RetellWebClient = module.RetellWebClient;
+      console.log('✅ Retell SDK loaded');
+      resolve();
+    } catch (error) {
+      reject(new Error('Failed to load Retell SDK: ' + error.message));
+    }
+  });
+}
+
+  // Get access token from n8n webhook
+  async function getRetellAccessToken() {
+    console.log('🔑 Fetching Retell access token from n8n...');
+    
+    const response = await fetch(CONFIG.voiceTokenWebhookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        source: 'leadpi-widget',
+        conversationId: state.conversationId,
+        userLocation: state.userLocation,
+        trafficSource: getTrafficSource()
+      })
     });
+
+    if (!response.ok) {
+      throw new Error(`Token request failed: ${response.status}`);
+    }
+
+    const data = await response.json();
+    
+    if (!data.success || !data.access_token) {
+      throw new Error('No access token in response');
+    }
+
+    console.log('✅ Got access token, call_id:', data.call_id);
+    return data.access_token;
   }
 
-  // Start voice call
+  // Start voice call - UPDATED TO USE n8n TOKEN FLOW
   async function startVoiceCall() {
+    const voiceButton = document.getElementById('start-voice-call');
+    
     try {
       state.callConnecting = true;
+      voiceButton.disabled = true;
+      voiceButton.textContent = '⏳ Connecting...';
       
       // Show voice modal
       const voiceModal = document.getElementById('voice-modal');
@@ -809,72 +1010,90 @@
       avatarContainer.classList.add('connecting');
       
       document.getElementById('call-status').textContent = 'CONNECTING';
-      document.getElementById('call-message').textContent = 'Connecting to Sarah...';
+      document.getElementById('call-message').textContent = 'Getting access token...';
       
       // Close medium popup
       setStage('small');
 
+      // Load Retell SDK if not already loaded
+      await loadRetellSDK();
+      document.getElementById('call-message').textContent = 'Initializing...';
+
       // Initialize Retell client if not already done
       if (!retellClient) {
-        await loadRetellSDK();
         retellClient = new window.RetellWebClient();
         
         // Set up event listeners
         retellClient.on('call_started', () => {
-          console.log('Call started');
+          console.log('📞 Call started');
           state.callActive = true;
           state.callConnecting = false;
           
           avatarContainer.classList.remove('connecting');
           document.getElementById('call-status').textContent = 'CONNECTED';
-          document.getElementById('call-message').textContent = 'Sarah is listening. Start speaking...';
+          document.getElementById('call-message').textContent = `${CONFIG.agentName} is listening. Start speaking...`;
         });
 
         retellClient.on('agent_start_talking', () => {
-          console.log('Agent speaking');
+          console.log('🗣️ Agent speaking');
           state.aiSpeaking = true;
           avatarContainer.classList.add('speaking');
-          document.getElementById('call-status').textContent = 'SARAH SPEAKING';
+          document.getElementById('call-status').textContent = `${CONFIG.agentName.toUpperCase()} SPEAKING`;
         });
 
         retellClient.on('agent_stop_talking', () => {
-          console.log('Agent stopped');
+          console.log('👂 Agent listening');
           state.aiSpeaking = false;
           avatarContainer.classList.remove('speaking');
           document.getElementById('call-status').textContent = 'LISTENING';
         });
 
         retellClient.on('call_ended', () => {
-          console.log('Call ended');
+          console.log('📴 Call ended');
           endVoiceCall();
         });
 
         retellClient.on('error', (error) => {
-          console.error('Retell error:', error);
-          alert('Call error: ' + error.message);
-          endVoiceCall();
+          console.error('❌ Retell error:', error);
+          document.getElementById('call-message').textContent = 'Call error: ' + (error.message || 'Unknown error');
+          setTimeout(() => endVoiceCall(), 2000);
         });
       }
 
-      // Get access token from Retell (you'll need to implement this endpoint)
-      // For demo, using agent ID directly (requires Retell API key on client - not secure for production)
-      const startCallResponse = await retellClient.startCall({
-        agentId: CONFIG.retellAgentId,
+      // IMPORTANT: Get access token from n8n (not using agentId directly)
+      document.getElementById('call-message').textContent = 'Connecting to ' + CONFIG.agentName + '...';
+      const accessToken = await getRetellAccessToken();
+
+      // Start call with access token
+      await retellClient.startCall({
+        accessToken: accessToken,
         sampleRate: 24000,
       });
 
-      console.log('Call started:', startCallResponse);
+      console.log('✅ Call initiated successfully');
       
     } catch (error) {
-      console.error('Failed to start call:', error);
-      alert('Failed to start call. Please check console for details.');
-      endVoiceCall();
+      console.error('❌ Failed to start call:', error);
+      document.getElementById('call-status').textContent = 'ERROR';
+      document.getElementById('call-message').textContent = 'Failed to connect: ' + error.message;
+      
+      // Reset after showing error
+      setTimeout(() => {
+        endVoiceCall();
+      }, 3000);
+    } finally {
+      voiceButton.disabled = false;
+      voiceButton.textContent = `📞 Or Talk to ${CONFIG.agentName} Now`;
     }
   }
 
   function endVoiceCall() {
-    if (retellClient) {
-      retellClient.stopCall();
+    if (retellClient && state.callActive) {
+      try {
+        retellClient.stopCall();
+      } catch (e) {
+        console.log('Call already ended');
+      }
     }
     
     state.callActive = false;
@@ -885,9 +1104,16 @@
     const overlay = document.getElementById('voice-modal-overlay');
     const avatarContainer = document.getElementById('voice-avatar-container');
     
-    voiceModal.classList.remove('active');
-    overlay.classList.remove('active');
-    avatarContainer.classList.remove('speaking', 'connecting');
+    if (voiceModal) voiceModal.classList.remove('active');
+    if (overlay) overlay.classList.remove('active');
+    if (avatarContainer) avatarContainer.classList.remove('speaking', 'connecting');
+
+    // Reset button
+    const voiceButton = document.getElementById('start-voice-call');
+    if (voiceButton) {
+      voiceButton.disabled = false;
+      voiceButton.textContent = `📞 Or Talk to ${CONFIG.agentName} Now`;
+    }
   }
 
   function setStage(newStage) {
@@ -914,6 +1140,75 @@
     }
   }
 
+  // Add message to chat
+  function addMessage(content, role) {
+    const container = document.getElementById('aba-messages-container');
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `aba-message ${role}`;
+    messageDiv.innerHTML = `<div class="aba-message-bubble">${content}</div>`;
+    container.appendChild(messageDiv);
+    container.scrollTop = container.scrollHeight;
+    
+    state.messages.push({ role, content });
+  }
+
+  // Show typing indicator
+  function showTyping() {
+    const container = document.getElementById('aba-messages-container');
+    const typingDiv = document.createElement('div');
+    typingDiv.className = 'aba-message assistant';
+    typingDiv.id = 'typing-indicator';
+    typingDiv.innerHTML = `
+      <div class="aba-typing-indicator">
+        <span></span><span></span><span></span>
+      </div>
+    `;
+    container.appendChild(typingDiv);
+    container.scrollTop = container.scrollHeight;
+  }
+
+  // Hide typing indicator
+  function hideTyping() {
+    const typing = document.getElementById('typing-indicator');
+    if (typing) typing.remove();
+  }
+
+  // Send message to webhook
+  async function sendMessage(userMessage) {
+    addMessage(userMessage, 'user');
+    showTyping();
+
+    try {
+      const response = await fetch(CONFIG.webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          messages: state.messages,
+          collectedData: state.collectedData,
+          conversationId: state.conversationId,
+          userLocation: state.userLocation,
+          trafficSource: getTrafficSource()
+        })
+      });
+
+      const data = await response.json();
+      hideTyping();
+
+      if (data.response) {
+        addMessage(data.response, 'assistant');
+      }
+
+      if (data.collectedData) {
+        state.collectedData = { ...state.collectedData, ...data.collectedData };
+      }
+
+    } catch (error) {
+      console.error('Message error:', error);
+      hideTyping();
+      addMessage("I'm having trouble connecting. Please try again.", 'assistant');
+    }
+  }
+
   function initEventListeners() {
     // Small launcher -> medium popup
     document.getElementById('aba-chat-launcher').addEventListener('click', () => {
@@ -931,17 +1226,55 @@
     // End call button
     document.getElementById('end-call-btn').addEventListener('click', endVoiceCall);
 
+    // Click overlay to end call
+    document.getElementById('voice-modal-overlay').addEventListener('click', endVoiceCall);
+
     // Medium popup buttons -> open full chat
     document.querySelectorAll('.aba-medium-button').forEach(btn => {
       btn.addEventListener('click', (e) => {
+        const value = e.target.dataset.value;
         setStage('full');
-        // ... existing chat logic
+        
+        // Add greeting from assistant
+        setTimeout(() => {
+          addMessage(CONFIG.greeting, 'assistant');
+          
+          // Then add user's response
+          setTimeout(() => {
+            const userResponse = value === 'yes' 
+              ? "Yes, I was recently injured in an accident."
+              : "I just have some questions.";
+            sendMessage(userResponse);
+          }, 500);
+        }, 300);
       });
     });
 
     // Chat window close
     document.querySelector('.aba-chat-close').addEventListener('click', () => {
       setStage('small');
+    });
+
+    // Send message on button click
+    document.getElementById('aba-send-button').addEventListener('click', () => {
+      const input = document.getElementById('aba-user-input');
+      const message = input.value.trim();
+      if (message) {
+        sendMessage(message);
+        input.value = '';
+      }
+    });
+
+    // Send message on Enter key
+    document.getElementById('aba-user-input').addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        const input = e.target;
+        const message = input.value.trim();
+        if (message) {
+          sendMessage(message);
+          input.value = '';
+        }
+      }
     });
   }
 
@@ -964,8 +1297,9 @@
     await detectLocation();
     setupAutoOpen();
     
-    console.log('LeadPI Voice Widget v2 initialized 🎤');
-    console.log('Human-centered voice UI with Sarah\'s avatar + sound waves');
+    console.log('🚀 LeadPI Voice Widget v2.1 initialized');
+    console.log('📞 Voice: n8n token flow enabled');
+    console.log('💬 Chat: Webhook flow enabled');
   }
 
   if (document.readyState === 'loading') {
@@ -975,4 +1309,3 @@
   }
 
 })();
-
