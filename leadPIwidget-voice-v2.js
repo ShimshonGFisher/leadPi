@@ -1037,14 +1037,12 @@
         retellClient.on('agent_start_talking', () => {
           console.log('🗣️ Agent speaking');
           state.aiSpeaking = true;
-          avatarContainer.classList.add('speaking');
-          document.getElementById('call-status').textContent = `${CONFIG.agentName.toUpperCase()} SPEAKING`;
+          document.getElementById('voice-avatar-container').classList.add('speaking');
         });
-
         retellClient.on('agent_stop_talking', () => {
           console.log('👂 Agent listening');
           state.aiSpeaking = false;
-          avatarContainer.classList.remove('speaking');
+          document.getElementById('voice-avatar-container').classList.remove('speaking');
           document.getElementById('call-status').textContent = 'LISTENING';
         });
 
