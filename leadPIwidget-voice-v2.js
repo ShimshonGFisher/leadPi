@@ -890,13 +890,13 @@
       <div class="aba-voice-modal-overlay" id="voice-modal-overlay"></div>
       <div class="aba-voice-modal" id="voice-modal">
         <div class="voice-avatar-container" id="voice-avatar-container">
-          <div class="sound-waves">
+         <!--  <div class="sound-waves">
             <div class="sound-wave-bar"></div>
             <div class="sound-wave-bar"></div>
             <div class="sound-wave-bar"></div>
             <div class="sound-wave-bar"></div>
             <div class="sound-wave-bar"></div>
-          </div>
+          </div> -->
           <img src="${CONFIG.agentAvatar}" alt="${CONFIG.agentName}" class="voice-avatar">
         </div>
         
