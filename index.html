@@ -1,555 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lead PI - Elite Lead Capture for Personal Injury Law Firms</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            line-height: 1.8;
-            color: #d4d4d4;
-            background: #0d0d0d;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-        
-        /* Header */
-        header {
-            background: #000;
-            color: white;
-            padding: 25px 0;
-            text-align: center;
-            border-bottom: 1px solid #1f1f1f;
-        }
-        
-        header h1 {
-            font-size: 32px;
-            font-weight: 400;
-            letter-spacing: 4px;
-            color: #d4af37;
-            font-family: 'Georgia', serif;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(to bottom, #0d0d0d 0%, #1a1a1a 100%);
-            color: white;
-            padding: 100px 40px 80px;
-            text-align: center;
-            border-bottom: 1px solid #2a2a2a;
-        }
-        
-        .hero h2 {
-            font-size: 56px;
-            margin-bottom: 30px;
-            font-weight: 400;
-            color: #fff;
-            line-height: 1.3;
-            font-family: 'Georgia', serif;
-        }
-        
-        .hero p {
-            font-size: 24px;
-            margin-bottom: 50px;
-            color: #b8b8b8;
-            font-weight: 300;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
-        
-        .video-container {
-            max-width: 900px;
-            margin: 50px auto 40px;
-            background: #000;
-            border: 2px solid #d4af37;
-            border-radius: 4px;
-            padding: 3px;
-            box-shadow: 0 10px 40px rgba(212, 175, 55, 0.15);
-        }
-        
-        .video-placeholder {
-            width: 100%;
-            aspect-ratio: 16/9;
-            background: #1a1a1a;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-size: 18px;
-            font-family: -apple-system, sans-serif;
-        }
-        
-        .cta-button {
-            background: #d4af37;
-            color: #000;
-            padding: 18px 50px;
-            font-size: 16px;
-            font-weight: 600;
-            border: none;
-            border-radius: 2px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.3s;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-family: -apple-system, sans-serif;
-            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
-        }
-        
-        .cta-button:hover {
-            background: #c4a037;
-            box-shadow: 0 6px 30px rgba(212, 175, 55, 0.5);
-            transform: translateY(-2px);
-        }
-        
-        /* Value Proposition */
-        .value-prop {
-            padding: 100px 40px;
-            background: #0d0d0d;
-            text-align: center;
-        }
-        
-        .value-prop h3 {
-            font-size: 42px;
-            margin-bottom: 30px;
-            color: #fff;
-            font-weight: 400;
-            font-family: 'Georgia', serif;
-        }
-        
-        .value-prop .subtitle {
-            font-size: 22px;
-            color: #999;
-            margin-bottom: 80px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.7;
-        }
-        
-        .value-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 60px;
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        
-        .value-card {
-            padding: 50px 40px;
-            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
-            border-top: 3px solid #d4af37;
-            transition: all 0.3s;
-        }
-        
-        .value-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-        }
-        
-        .value-card h4 {
-            font-size: 26px;
-            margin-bottom: 20px;
-            color: #d4af37;
-            font-weight: 400;
-            font-family: 'Georgia', serif;
-        }
-        
-        .value-card p {
-            font-size: 17px;
-            color: #b8b8b8;
-            line-height: 1.9;
-            font-family: -apple-system, sans-serif;
-        }
-        
-        /* How It Works */
-        .how-it-works {
-            padding: 100px 40px;
-            background: #1a1a1a;
-            border-top: 1px solid #2a2a2a;
-            border-bottom: 1px solid #2a2a2a;
-        }
-        
-        .how-it-works h3 {
-            font-size: 42px;
-            text-align: center;
-            margin-bottom: 80px;
-            color: #fff;
-            font-weight: 400;
-            font-family: 'Georgia', serif;
-        }
-        
-        .process {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-        
-        .process-step {
-            display: grid;
-            grid-template-columns: 100px 1fr;
-            gap: 40px;
-            margin-bottom: 60px;
-            padding-bottom: 60px;
-            border-bottom: 1px solid #2a2a2a;
-        }
-        
-        .process-step:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-        
-        .step-number {
-            width: 80px;
-            height: 80px;
-            background: transparent;
-            border: 2px solid #d4af37;
-            color: #d4af37;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            font-weight: 300;
-            font-family: 'Georgia', serif;
-        }
-        
-        .step-content h4 {
-            font-size: 28px;
-            margin-bottom: 15px;
-            color: #fff;
-            font-weight: 400;
-            font-family: 'Georgia', serif;
-        }
-        
-        .step-content p {
-            font-size: 18px;
-            color: #999;
-            line-height: 1.8;
-            font-family: -apple-system, sans-serif;
-        }
-        
-        /* Investment Section */
-        .investment {
-            padding: 100px 40px;
-            background: #0d0d0d;
-            text-align: center;
-        }
-        
-        .investment h3 {
-            font-size: 42px;
-            margin-bottom: 60px;
-            color: #fff;
-            font-weight: 400;
-            font-family: 'Georgia', serif;
-        }
-        
-        .investment-box {
-            max-width: 500px;
-            margin: 0 auto;
-            padding: 60px 50px;
-            border: 2px solid #d4af37;
-            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
-            box-shadow: 0 10px 50px rgba(0,0,0,0.5);
-        }
-        
-        .price {
-            font-size: 64px;
-            font-weight: 300;
-            color: #d4af37;
-            margin-bottom: 15px;
-            font-family: 'Georgia', serif;
-        }
-        
-        .price-details {
-            font-size: 19px;
-            color: #999;
-            margin-bottom: 50px;
-            line-height: 1.6;
-        }
-        
-        .investment-features {
-            text-align: left;
-            margin-bottom: 50px;
-            border-top: 1px solid #2a2a2a;
-            padding-top: 40px;
-        }
-        
-        .investment-features li {
-            font-size: 17px;
-            color: #d4d4d4;
-            margin-bottom: 15px;
-            padding-left: 30px;
-            position: relative;
-            font-family: -apple-system, sans-serif;
-        }
-        
-        .investment-features li:before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 8px;
-            width: 6px;
-            height: 6px;
-            background: #d4af37;
-            transform: rotate(45deg);
-        }
-        
-        /* Final CTA */
-        .final-cta {
-            padding: 100px 40px;
-            background: linear-gradient(to bottom, #1a1a1a 0%, #0d0d0d 100%);
-            text-align: center;
-            color: white;
-            border-top: 1px solid #2a2a2a;
-        }
-        
-        .final-cta h3 {
-            font-size: 48px;
-            margin-bottom: 25px;
-            font-weight: 400;
-            font-family: 'Georgia', serif;
-        }
-        
-        .final-cta p {
-            font-size: 22px;
-            margin-bottom: 45px;
-            color: #b8b8b8;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* Footer */
-        footer {
-            background: #000;
-            color: #666;
-            padding: 40px 40px;
-            text-align: center;
-            border-top: 1px solid #1f1f1f;
-            font-family: -apple-system, sans-serif;
-            font-size: 14px;
-            letter-spacing: 1px;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 20px;
-            }
-            
-            header h1 {
-                font-size: 24px;
-                letter-spacing: 3px;
-            }
-            
-            .hero {
-                padding: 60px 20px 50px;
-            }
-            
-            .hero h2 {
-                font-size: 36px;
-            }
-            
-            .hero p {
-                font-size: 18px;
-            }
-            
-            .video-container {
-                margin: 30px auto 30px;
-            }
-            
-            .value-prop,
-            .how-it-works,
-            .investment,
-            .final-cta {
-                padding: 60px 20px;
-            }
-            
-            .value-prop h3,
-            .how-it-works h3,
-            .investment h3,
-            .final-cta h3 {
-                font-size: 32px;
-            }
-            
-            .value-prop .subtitle {
-                font-size: 18px;
-            }
-            
-            .value-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-            
-            .value-card {
-                padding: 30px 25px;
-            }
-            
-            .process-step {
-                grid-template-columns: 1fr;
-                gap: 20px;
-                text-align: center;
-            }
-            
-            .step-number {
-                margin: 0 auto;
-            }
-            
-            .investment-box {
-                padding: 40px 30px;
-            }
-            
-            .price {
-                font-size: 48px;
-            }
-            
-            .cta-button {
-                padding: 15px 35px;
-                font-size: 14px;
-            }
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="theme-color" content="#F7F3EB" />
+<title>Talktical — Voice AI, Live</title>
+<style>
+:root{
+  --ivory:#F7F3EB; --card:#FFFDF8; --ink:#1C1914; --muted:#6F675B;
+  --line:#E8E0CF; --gold:#B6913F; --gold-soft:#D8BC72; --gold-deep:#8F7026;
+  --red:#A93B2A;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  background:var(--ivory); color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+  min-height:100vh; display:flex; flex-direction:column;
+}
+
+header{display:flex; justify-content:center; padding:36px 24px 0}
+.wordmark{font-family:Georgia,"Times New Roman",serif; font-size:15px; letter-spacing:.45em; text-transform:uppercase}
+.wordmark::after{content:""; display:block; width:34px; height:1px; background:var(--gold); margin:12px auto 0}
+
+main{flex:1; display:flex; align-items:center; justify-content:center; padding:48px 24px}
+.hero{max-width:760px; text-align:center}
+.eyebrow{font-size:11px; letter-spacing:.35em; text-transform:uppercase; color:var(--gold-deep); margin-bottom:26px}
+h1{font-family:Georgia,"Times New Roman",serif; font-weight:400; font-size:clamp(34px,6vw,58px); line-height:1.18}
+h1 em{font-style:italic; color:var(--gold-deep)}
+.sub{margin:26px auto 0; max-width:560px; font-size:17px; line-height:1.75; color:var(--muted)}
+
+.cta{
+  margin-top:42px; display:inline-flex; align-items:center; gap:12px;
+  background:var(--ink); color:var(--ivory); border:none; cursor:pointer;
+  padding:18px 34px; font-size:13px; letter-spacing:.22em; text-transform:uppercase;
+  border-radius:2px; box-shadow:0 14px 34px rgba(28,25,20,.18);
+  transition:background .25s, transform .2s;
+}
+.cta:hover{background:#000; transform:translateY(-1px)}
+.cta:focus-visible{outline:2px solid var(--gold); outline-offset:3px}
+.cta .dot{width:9px; height:9px; border-radius:50%; background:var(--gold-soft); animation:ctapulse 2.2s infinite}
+@keyframes ctapulse{
+  0%{box-shadow:0 0 0 0 rgba(216,188,114,.55)}
+  70%{box-shadow:0 0 0 9px rgba(216,188,114,0)}
+  100%{box-shadow:0 0 0 0 rgba(216,188,114,0)}
+}
+.mic-note{margin-top:16px; font-size:12.5px; color:var(--muted)}
+
+.proof{
+  margin-top:64px; padding-top:26px; border-top:1px solid var(--line);
+  font-size:13px; letter-spacing:.06em; color:var(--muted);
+  display:flex; gap:14px; justify-content:center; flex-wrap:wrap;
+}
+.proof .sep{color:var(--gold)}
+
+footer{padding:26px; text-align:center; font-size:11px; letter-spacing:.2em; text-transform:uppercase; color:#9B937F}
+
+/* ============ Talktical VOICE WIDGET — styles ============ */
+#amira-launcher{
+  position:fixed; right:26px; bottom:26px; width:66px; height:66px;
+  border-radius:50%; border:none; cursor:pointer; z-index:9999;
+  background:radial-gradient(circle at 30% 28%, #DCC07A, var(--gold) 58%, var(--gold-deep));
+  box-shadow:0 12px 30px rgba(143,112,38,.4);
+  display:flex; align-items:center; justify-content:center;
+  transition:transform .2s;
+}
+#amira-launcher:hover{transform:scale(1.06)}
+#amira-launcher:focus-visible{outline:2px solid var(--ink); outline-offset:3px}
+#amira-launcher svg{width:26px; height:26px; fill:#fff}
+#amira-launcher::before{
+  content:""; position:absolute; inset:-6px; border-radius:50%;
+  border:1px solid rgba(182,145,63,.5); animation:ring 2.6s ease-out infinite;
+}
+#amira-launcher.active::before{animation:none; opacity:0}
+@keyframes ring{0%{transform:scale(.85); opacity:.9} 100%{transform:scale(1.35); opacity:0}}
+
+#amira-panel{
+  position:fixed; right:26px; bottom:106px; width:300px; z-index:9999;
+  background:var(--card); border:1px solid var(--line); border-top:3px solid var(--gold);
+  border-radius:10px; box-shadow:0 24px 60px rgba(28,25,20,.22);
+  padding:22px 22px 18px;
+  opacity:0; pointer-events:none; transform:translateY(10px);
+  transition:opacity .25s, transform .25s;
+}
+#amira-panel.open{opacity:1; pointer-events:auto; transform:translateY(0)}
+.panel-title{font-family:Georgia,serif; font-size:17px; letter-spacing:.14em; display:flex; justify-content:space-between; align-items:baseline}
+.panel-title small{font-family:-apple-system,BlinkMacSystemFont,sans-serif; font-size:11px; letter-spacing:.08em; color:var(--muted)}
+#amira-status{margin-top:14px; font-size:14.5px; font-weight:600}
+#amira-sub{margin-top:4px; font-size:12.5px; line-height:1.5; color:var(--muted); min-height:16px}
+.eq{display:flex; align-items:flex-end; gap:4px; height:28px; margin:16px 0 4px}
+.eq span{width:4px; border-radius:2px; background:var(--gold); height:6px; transition:height .12s ease}
+#amira-end{
+  margin-top:14px; width:100%; border:1px solid var(--red); background:transparent; color:var(--red);
+  padding:11px 0; font-size:12px; letter-spacing:.2em; text-transform:uppercase;
+  border-radius:2px; cursor:pointer; transition:background .2s, color .2s;
+}
+#amira-end:hover{background:var(--red); color:#fff}
+#amira-panel[data-state="idle"] #amira-end{display:none}
+
+@media (prefers-reduced-motion: reduce){
+  #amira-launcher::before, .cta .dot{animation:none}
+}
+@media (max-width:640px){
+  header{padding-top:26px}
+  main{padding:36px 20px}
+  .proof{font-size:12px}
+  #amira-launcher{right:16px; bottom:16px}
+  #amira-panel{right:16px; bottom:96px; width:calc(100vw - 32px); max-width:320px}
+}
+</style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container">
-            <h1>LEAD PI</h1>
-        </div>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h2>Capture Every Lead.<br>Convert Every Opportunity.</h2>
-            <p>Elite AI technology that ensures no prospective client ever goes unanswered—day or night, phone or web.</p>
-            
-            <div class="video-container">
-                <div class="video-placeholder">
-                    [ Your Demo Video Will Appear Here ]
-                </div>
-            </div>
-            
-            <a href="#contact" class="cta-button">Schedule Consultation</a>
-        </div>
-    </section>
+<header><div class="wordmark">Talktical</div></header>
 
-    <!-- Value Proposition -->
-    <section class="value-prop">
-        <div class="container">
-            <h3>Every Inquiry Is an Opportunity</h3>
-            <p class="subtitle">Your firm deserves a system that captures every potential client, qualifies them intelligently, and delivers them ready to convert.</p>
-            
-            <div class="value-grid">
-                <div class="value-card">
-                    <h4>24/7 Availability</h4>
-                    <p>Clients reach out when they're ready—not when you're in the office. Our AI responds instantly to website visitors and phone inquiries, ensuring your firm is always accessible when opportunity knocks.</p>
-                </div>
-                <div class="value-card">
-                    <h4>Intelligent Qualification</h4>
-                    <p>Through natural conversation via text or voice, the AI gathers critical case details: injury type, incident timeline, medical treatment status. You receive only prospects with viable claims, pre-qualified and ready for intake.</p>
-                </div>
-                <div class="value-card">
-                    <h4>Maximize Your Team's Value</h4>
-                    <p>Your intake specialists are expensive and talented. Let them focus on high-value conversations with pre-qualified leads rather than screening calls that go nowhere. Efficiency meets excellence.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<main>
+  <section class="hero">
+    <div class="eyebrow">A live demonstration</div>
+    <h1>Voice AI is reliable.<br>And it is <em>the way forward</em>.</h1>
+    <p class="sub">Talktical answers the moment a customer calls — naturally, accurately, at any hour. Don't take our word for it. Press the button and have a conversation right now.</p>
+    <button class="cta" id="hero-cta"><span class="dot"></span>Talk to Talktical — live</button>
+    <div class="mic-note">Your browser will ask for microphone access.</div>
+    <div class="proof">
+      <span>Answers in under a second</span><span class="sep">·</span>
+      <span>Never misses a call</span><span class="sep">·</span>
+      <span>Hands over to your team when it matters</span>
+    </div>
+  </section>
+</main>
 
-    <!-- How It Works -->
-    <section class="how-it-works">
-        <div class="container">
-            <h3>The Process</h3>
-            
-            <div class="process">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h4>Prospect Makes Contact</h4>
-                        <p>A potential client discovers your firm—they either start a conversation on your website or call your dedicated AI phone line. Both channels are active 24 hours a day, 365 days a year.</p>
-                    </div>
-                </div>
-                
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h4>AI Conducts Intelligent Intake</h4>
-                        <p>Through natural, empathetic conversation, the AI gathers essential information: nature of injury, when it occurred, medical treatment received, current situation. The interaction feels personal, not automated.</p>
-                    </div>
-                </div>
-                
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h4>Qualified Leads Delivered</h4>
-                        <p>You receive an immediate email with the complete conversation transcript and prospect details. Cases meeting your criteria come directly to you. Those outside your parameters are handled gracefully, protecting your firm's reputation.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<footer>Talktical &nbsp;·&nbsp; Voice AI Concierge</footer>
 
-    <!-- Investment -->
-    <section class="investment">
-        <div class="container">
-            <h3>Investment</h3>
-            <div class="investment-box">
-                <div class="price">$497<span style="font-size: 28px; font-weight: 300;">/month</span></div>
-                <div class="price-details">A single qualified case typically covers months of service.</div>
-                
-                <ul class="investment-features">
-                    <li>Complimentary 14-day evaluation period</li>
-                    <li>Implementation within 48 hours</li>
-                    <li>Website text chat interface</li>
-                    <li>Dedicated AI voice line with your firm's number</li>
-                    <li>Continuous 24/7 lead capture and qualification</li>
-                    <li>Instant email notifications with full transcripts</li>
-                    <li>Unlimited prospect interactions</li>
-                    <li>White-glove setup and support</li>
-                </ul>
-                
-                <a href="#contact" class="cta-button">Begin Consultation</a>
-            </div>
-        </div>
-    </section>
+<!-- ============ Talktical VOICE WIDGET — copy from here to embed on any site ============ -->
+<button id="amira-launcher" aria-label="Talk to Talktical">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.92V21h2v-3.08A7 7 0 0 0 19 11h-2z"/></svg>
+</button>
 
-    <!-- Final CTA -->
-    <section id="contact" class="final-cta">
-        <div class="container">
-            <h3>Your Firm Deserves This Advantage</h3>
-            <p>Join the elite personal injury firms that never miss an opportunity. Implementation begins in 48 hours.</p>
-            <a href="mailto:your-email@example.com" class="cta-button">Schedule Consultation</a>
-        </div>
-    </section>
+<div id="amira-panel" data-state="idle" role="status">
+  <div class="panel-title">Talktical <small id="amira-timer"></small></div>
+  <div id="amira-status">Ready</div>
+  <div id="amira-sub"></div>
+  <div class="eq" id="amira-eq"><span></span><span></span><span></span><span></span><span></span></div>
+  <button id="amira-end">End call</button>
+</div>
 
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <p>LEAD PI &copy; 2025 • PREMIUM LEAD CAPTURE FOR PERSONAL INJURY LAW</p>
-        </div>
-    </footer>
+<script type="module">
+/* ===================== CONFIG ===================== */
+const VAPI_PUBLIC_KEY = '6485a626-41bf-4f2f-9bd2-dba156a5944a';      // Vapi dashboard → Vapi API Keys → the PUBLIC key
+const ASSISTANT_ID    = '2ec02cb3-ec6f-4185-bb4e-00e9c786e8a1'; // Emergemct
+const AGENT_NAME      = 'Talktical';
+/* ================================================== */
 
-    
-        <!-- Lead PI Demo Widget -->
-<script src="https://cdn.jsdelivr.net/gh/ShimshonGFisher/leadPi@main/leadPIwidget.js">
-             console.log('Widget will load here');
-            </script>
-       
-    
+const launcher = document.getElementById('amira-launcher');
+const panel    = document.getElementById('amira-panel');
+const statusEl = document.getElementById('amira-status');
+const subEl    = document.getElementById('amira-sub');
+const timerEl  = document.getElementById('amira-timer');
+const endBtn   = document.getElementById('amira-end');
+const bars     = [...document.querySelectorAll('#amira-eq span')];
+const heroBtn  = document.getElementById('hero-cta');
+
+let vapi = null, active = false, connecting = false;
+let timerInt = null, t0 = null, hideTO = null;
+const BASE = [8, 16, 24, 16, 8];
+
+function show(state, status, sub = ''){
+  clearTimeout(hideTO);
+  panel.dataset.state = state;
+  panel.classList.add('open');
+  statusEl.textContent = status;
+  subEl.textContent = sub;
+}
+function rest(){ bars.forEach((b, i) => b.style.height = (BASE[i] * 0.35) + 'px'); }
+function pump(v){ bars.forEach((b, i) => b.style.height = Math.max(4, Math.min(28, BASE[i] * (0.35 + v * 2.6))) + 'px'); }
+
+function startTimer(){
+  t0 = Date.now();
+  timerInt = setInterval(() => {
+    const s = Math.floor((Date.now() - t0) / 1000);
+    timerEl.textContent = Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
+  }, 500);
+}
+function stopTimer(){ clearInterval(timerInt); timerInt = null; }
+
+function teardown(msg){
+  active = false; connecting = false;
+  stopTimer(); rest();
+  launcher.classList.remove('active');
+  show('idle', msg, '');
+  hideTO = setTimeout(() => { panel.classList.remove('open'); timerEl.textContent = ''; }, 2600);
+}
+
+async function ensureVapi(){
+  if (vapi) return vapi;
+  const mod  = await import('https://cdn.jsdelivr.net/npm/@vapi-ai/web/+esm');
+  const Vapi = mod.default || mod.Vapi;
+  vapi = new Vapi(VAPI_PUBLIC_KEY);
+
+  vapi.on('call-start', () => {
+    connecting = false; active = true;
+    launcher.classList.add('active');
+    show('live', 'Connected', 'Just speak — ' + AGENT_NAME + ' is listening');
+    startTimer();
+  });
+  vapi.on('call-end', () => teardown('Call ended'));
+  vapi.on('speech-start', () => { if (active) show('live', AGENT_NAME + ' is speaking…'); });
+  vapi.on('speech-end',   () => { if (active){ show('live', 'Connected', 'Just speak — ' + AGENT_NAME + ' is listening'); rest(); } });
+  vapi.on('volume-level', v => { if (active) pump(v); });
+  vapi.on('error', e => {
+    console.error('[Talktical] Vapi error:', e);
+    teardown('Connection error — open the console for details');
+  });
+  return vapi;
+}
+
+async function startCall(){
+  if (active || connecting){ panel.classList.add('open'); return; }
+  if (VAPI_PUBLIC_KEY.startsWith('PASTE_')){
+    show('idle', 'One step left', 'Paste your Vapi public key into the CONFIG block at the top of the script in this file.');
+    return;
+  }
+  connecting = true;
+  show('connecting', 'Connecting…', 'Setting up a secure line');
+  rest();
+  try{
+    const v = await ensureVapi();
+    await v.start(ASSISTANT_ID);
+  }catch(err){
+    console.error('[Talktical] Failed to start call:', err);
+    teardown('Could not start the call — check mic permission and key');
+  }
+}
+
+function endCall(){
+  try{ vapi && vapi.stop(); }catch(_){}
+  if (!active) teardown('Call ended');
+}
+
+launcher.addEventListener('click', startCall);
+heroBtn.addEventListener('click', startCall);
+endBtn.addEventListener('click', endCall);
+rest();
+
+// Console escape hatch if the UI ever misbehaves mid-demo:
+window.TALKTICAL_VOICE = { start: startCall, stop: endCall };
+</script>
+<!-- ============ /Talktical VOICE WIDGET ============ -->
 </body>
 </html>
