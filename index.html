@@ -194,7 +194,8 @@ function teardown(msg){
 async function ensureVapi(){
   if (vapi) return vapi;
   const mod  = await import('https://cdn.jsdelivr.net/npm/@vapi-ai/web/+esm');
-  const Vapi = mod.default || mod.Vapi;
+  let Vapi = mod.default || mod.Vapi || mod;
+  if (typeof Vapi !== 'function' && Vapi && Vapi.default) Vapi = Vapi.default;
   vapi = new Vapi(VAPI_PUBLIC_KEY);
 
   vapi.on('call-start', () => {
